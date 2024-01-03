@@ -65,7 +65,7 @@ class UserController extends Controller
 
 
 
-// Profile API
+// Vew Details of UserProfile API
 function UserProfile(Request $request){
     return Auth::user();
 }
@@ -77,8 +77,29 @@ function UserLogout(Request $request){
     return redirect('/userLogin');
 }
 
+// User Profile Update API
+function UpdateProfile(Request $request){
+    try{
+
+     $request->validate([
+        'firstName'=> 'required|string|max:50',
+        'lastName'=> 'required|string|max:50',
+        'mobile'=> 'required|string|max:50',
+     ]);
+
+     User::where('id','=',Auth::id())->update([
+        'firstName'=> $request->input('firstName'),
+        'lastName'=> $request->input('lastName'),
+        'mobile'=> $request->input('mobile'),
+     ]);
+     return response()->json(['status' => 'success', 'message' => 'User Profile Updated Successfully']);
+
+    } catch(Exception $e){
+        return response()->json(['status' => 'fail', 'message' =>  $e->getMessage()]);
+    }
+}
 
 
 
-
+// Last bracket
 }
