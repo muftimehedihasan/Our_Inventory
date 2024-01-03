@@ -30,7 +30,7 @@
                         </div>
                         <div class="row m-0 p-0">
                             <div class="col-md-4 p-2">
-                                <button onclick="onRegistration()" class="btn mt-3 w-100  bg-gradient-primary">Complete</button>
+                                <button class="btn mt-3 w-100  bg-gradient-primary">Complete</button>
                             </div>
                         </div>
                     </div>
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<script>
+{{-- <script>
 
   async function onRegistration() {
 
@@ -67,4 +67,4 @@
   }
 
 
-</script>
+</script> --}}

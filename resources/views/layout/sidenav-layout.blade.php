@@ -42,7 +42,7 @@
     <div class="container-fluid">
 
         <a class="navbar-brand" href="#">
-            <span class="icon-nav m-0 h5" onclick="MenuBarClickHandler()">
+            <span class="icon-nav m-0 h5">
                 <img class="nav-logo-sm mx-2"  src="{{asset('images/menu.svg')}}" alt="logo"/>
             </span>
             <img class="nav-logo  mx-2"  src="{{asset('images/logo.png')}}" alt="logo"/>
@@ -117,7 +117,7 @@
 
 
 
-<script>
+{{-- <script>
     function MenuBarClickHandler() {
         let sideNav = document.getElementById('sideNavRef');
         let content = document.getElementById('contentRef');
@@ -133,7 +133,7 @@
             content.classList.add("content");
         }
     }
-</script>
+</script> --}}
 
 </body>
 </html>

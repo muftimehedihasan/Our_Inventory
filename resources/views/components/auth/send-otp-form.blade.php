@@ -8,14 +8,14 @@
                     <label>Your email address</label>
                     <input id="email" placeholder="User Email" class="form-control" type="email"/>
                     <br/>
-                    <button onclick="SentOTP()"  class="btn w-100 float-end bg-gradient-primary">Next</button>
+                    <button class="btn w-100 float-end bg-gradient-primary">Next</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
+{{-- <script>
    async function SentOTP() {
 
        let postBody={"email":document.getElementById('email').value,}
@@ -30,4 +30,4 @@
            errorToast(res.data['message']);
        }
     }
-</script>
+</script> --}}

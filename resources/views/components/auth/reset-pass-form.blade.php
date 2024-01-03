@@ -11,14 +11,14 @@
                     <label>Confirm Password</label>
                     <input id="cpassword" placeholder="Confirm Password" class="form-control" type="password"/>
                     <br/>
-                    <button onclick="ResetPass()" class="btn w-100 bg-gradient-primary">Next</button>
+                    <button  class="btn w-100 bg-gradient-primary">Next</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
+{{-- <script>
   async function ResetPass() {
       let postBody={"password":document.getElementById('password').value}
 
@@ -34,4 +34,4 @@
       }
 
     }
-</script>
+</script> --}}

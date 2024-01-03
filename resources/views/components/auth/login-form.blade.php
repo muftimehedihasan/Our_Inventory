@@ -9,13 +9,13 @@
                     <br/>
                     <input id="password" placeholder="User Password" class="form-control" type="password"/>
                     <br/>
-                    <button onclick="SubmitLogin()" class="btn w-100 bg-gradient-primary">Next</button>
+                    <button  class="btn w-100 bg-gradient-primary">Next</button>
                     <hr/>
                     <div class="float-end mt-3">
                         <span>
-                            <a class="text-center ms-3 h6" href="{{url('/userRegistration')}}">Sign Up </a>
+                            <a class="text-center ms-3 h6" href="#">Sign Up </a>
                             <span class="ms-1">|</span>
-                            <a class="text-center ms-3 h6" href="{{url('/sendOtp')}}">Forget Password</a>
+                            <a class="text-center ms-3 h6" href="#">Forget Password</a>
                         </span>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
 </div>
 
 
-<script>
+{{-- <script>
 
   async function SubmitLogin() {
             let email=document.getElementById('email').value;
@@ -51,4 +51,4 @@
             }
     }
 
-</script>
+</script> --}}
