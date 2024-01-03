@@ -71,5 +71,14 @@ function UserProfile(Request $request){
 }
 
 
+// Logout API
+function UserLogout(Request $request){
+    $request->user()->tokens()->delete();
+    return redirect('/userLogin');
+}
+
+
+
+
 
 }
