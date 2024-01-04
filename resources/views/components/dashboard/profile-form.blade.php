@@ -26,7 +26,7 @@
                         </div>
                         <div class="row m-0 p-0">
                             <div class="col-md-4 p-2">
-                                <button class="btn mt-3 w-100  bg-gradient-primary">Update</button>
+                                <button onclick="onUpdate()" class="btn mt-3 w-100  bg-gradient-primary">Update</button>
                             </div>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
     </div>
 </div>
 
-{{-- <script>
+<script>
 
     getProfile();
     async function getProfile(){
@@ -76,5 +76,5 @@
     }
 
 
-</script> --}}
+</script>
 

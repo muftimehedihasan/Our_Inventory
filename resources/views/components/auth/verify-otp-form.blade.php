@@ -8,15 +8,13 @@
                     <label>4 Digit Code Here</label>
                     <input id="otp" placeholder="Code" class="form-control" type="text"/>
                     <br/>
-                    <button class="btn w-100 float-end bg-gradient-primary">Next</button>
+                    <button onclick="VerifyOtp()"  class="btn w-100 float-end bg-gradient-primary">Next</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-{{-- <script>
+<script>
 
 
    async function VerifyOtp() {
@@ -40,4 +38,4 @@
 
 
 
-</script> --}}
+</script>
