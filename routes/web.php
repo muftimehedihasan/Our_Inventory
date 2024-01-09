@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +31,11 @@ Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
 Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware('auth:sanctum');
 
 // Category Api Routes
-Route::post("/create-category",[CategoryController::class,'CreateCategory'])->middleware([TokenVerificationMiddleware::class]);
+Route::post("/create-category",[CategoryController::class,'CategoryCreate'])->middleware(['auth:sanctum']);
+Route::get("/list-category",[CategoryController::class,'CategoryList'])->middleware(['auth:sanctum']);
+Route::post("/delete-category",[CategoryController::class,'CategoryDelete'])->middleware(['auth:sanctum']);
+Route::post("/update-category",[CategoryController::class,'CategoryUpdate'])->middleware(['auth:sanctum']);
+Route::post("/category-by-id",[CategoryController::class,'CategoryByID'])->middleware(['auth:sanctum']);
 
 
 
@@ -49,3 +54,18 @@ Route::view('/sendOtp','pages.auth.send-otp-page');
 Route::view('/verifyOtp','pages.auth.verify-otp-page');
 Route::view('/resetPassword','pages.auth.reset-pass-page');
 Route::view('/userProfile','pages.dashboard.profile-page');
+Route::get('/categoryPage',[CategoryController::class,'CategoryPage'])->middleware(['auth:sanctum']);
+
+
+
+
+// Category Page Routes
+// Route::post("/create-category",[CategoryController::class,'CategoryCreate']);
+// Route::get("/list-category",[CategoryController::class,'CategoryList']);
+// Route::post("/delete-category",[CategoryController::class,'CategoryDelete']);
+// Route::post("/update-category",[CategoryController::class,'CategoryUpdate']);
+// Route::post("/category-by-id",[CategoryController::class,'CategoryByID']);
+
+
+
+

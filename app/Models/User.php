@@ -17,4 +17,10 @@ class User extends Authenticatable
     protected $attributes = ['otp' => '0'];
     protected $hidden = ['password', 'otp'];
 
+    // Define relationship
+
+    public function category(){
+        return $this->hasMany(Category::class);
+    }
+
 }
