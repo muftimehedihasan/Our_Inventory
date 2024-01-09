@@ -16,6 +16,8 @@ use App\Http\Controllers\UserController;
 
 // Web API Routes
 
+// Profile Api Routes
+
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
 Route::post('/user-login',[UserController::class,'UserLogin']);
 Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
@@ -26,6 +28,11 @@ Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware(
 Route::post('/send-otp',[UserController::class,'SendOTPCode']);
 Route::post('/verify-otp',[UserController::class,'VerifyOTP']);
 Route::post('/reset-password',[UserController::class,'ResetPassword'])->middleware('auth:sanctum');
+
+// Category Api Routes
+Route::post("/create-category",[CategoryController::class,'CreateCategory'])->middleware([TokenVerificationMiddleware::class]);
+
+
 
 
 
