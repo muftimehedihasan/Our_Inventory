@@ -2,49 +2,43 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
 
-    function CategoryPage(){
-        return view('pages.dashboard.category-page');
-    }
+
 
     function CategoryList(Request $request){
-        $user_id=$request->header('id');
-        return Category::where('user_id',$user_id)->get();
+
+        try{
+            $user_id=Auth::id();
+            $rows=Category::where('user_id',$user_id)->get();
+            return response()->json(['status' => 'success', 'rows' => $rows]);
+
+        }catch(Exception $e){
+            return $e;
+        }
     }
+
+
+
 
     function CategoryCreate(Request $request){
-        $user_id=$request->header('id');
-        return Category::create([
-            'name'=>$request->input('name'),
-            'user_id'=>$user_id
-        ]);
+        try{
+       $request->validate(['name'=>'required|string|min:2']);
+       $user_id=Auth::id();
+       Category::create(['name'=>$request->name,'user_id'=>$user_id]);
+       return response()->json(['status' => 'success', 'message' => 'Category Created Successfully']);
+        }catch(Exception $e){
+            return response()->json(['status' => 'fail', 'message' => $e->getMessage()]);
+        }
     }
 
-    function CategoryDelete(Request $request){
-        $category_id=$request->input('id');
-        $user_id=$request->header('id');
-        return Category::where('id',$category_id)->where('user_id',$user_id)->delete();
-    }
-
-
-    function CategoryByID(Request $request){
-        $category_id=$request->input('id');
-        $user_id=$request->header('id');
-        return Category::where('id',$category_id)->where('user_id',$user_id)->first();
-    }
-
-
-
-    function CategoryUpdate(Request $request){
-        $category_id=$request->input('id');
-        $user_id=$request->header('id');
-        return Category::where('id',$category_id)->where('user_id',$user_id)->update([
-            'name'=>$request->input('name'),
-        ]);
-    }
 }
+
+
+

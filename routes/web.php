@@ -54,7 +54,7 @@ Route::view('/sendOtp','pages.auth.send-otp-page');
 Route::view('/verifyOtp','pages.auth.verify-otp-page');
 Route::view('/resetPassword','pages.auth.reset-pass-page');
 Route::view('/userProfile','pages.dashboard.profile-page');
-Route::get('/categoryPage',[CategoryController::class,'CategoryPage'])->middleware(['auth:sanctum']);
+// Route::get('/categoryPage',[CategoryController::class,'CategoryPage'])->middleware(['auth:sanctum']);
 
 
 
