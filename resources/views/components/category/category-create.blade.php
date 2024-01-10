@@ -27,23 +27,24 @@
 
 <script>
     async function Save() {
-        let categoryName = document.getElementById('categoryName').value;
-        if (categoryName.length === 0) {
-            errorToast("Category Required !")
-        }
-        else {
+        try {
+            let categoryName = document.getElementById('categoryName').value;
             document.getElementById('modal-close').click();
             showLoader();
-            let res = await axios.post("/create-category",{name:categoryName})
+            let res = await axios.post("/create-category",{name:categoryName},HeaderToken())
             hideLoader();
-            if(res.status===201){
-                successToast('Request completed');
+
+            if(res.data['status']==="success"){
+                successToast(res.data['message']);
                 document.getElementById("save-form").reset();
                 await getList();
             }
             else{
-                errorToast("Request fail !")
+                errorToast(res.data['message'])
             }
+
+        }catch (e) {
+            unauthorized(e.response.status)
         }
     }
 </script>

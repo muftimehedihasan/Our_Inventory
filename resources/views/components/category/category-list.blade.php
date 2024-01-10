@@ -34,22 +34,21 @@
 
 getList();
 
-
 async function getList() {
 
+   try {
+       showLoader();
+       let res=await axios.get("/list-category",HeaderToken());
+       hideLoader();
 
-    showLoader();
-    let res=await axios.get("/list-category");
-    hideLoader();
+       let tableList=$("#tableList");
+       let tableData=$("#tableData");
 
-    let tableList=$("#tableList");
-    let tableData=$("#tableData");
+       tableData.DataTable().destroy();
+       tableList.empty();
 
-    tableData.DataTable().destroy();
-    tableList.empty();
-
-    res.data.forEach(function (item,index) {
-        let row=`<tr>
+       res.data['rows'].forEach(function (item,index) {
+           let row=`<tr>
                     <td>${index+1}</td>
                     <td>${item['name']}</td>
                     <td>
@@ -57,29 +56,32 @@ async function getList() {
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
                     </td>
                  </tr>`
-        tableList.append(row)
-    })
+           tableList.append(row)
+       })
 
-    $('.editBtn').on('click', async function () {
+       $('.editBtn').on('click', async function () {
            let id= $(this).data('id');
            await FillUpUpdateForm(id)
            $("#update-modal").modal('show');
+       })
 
+       $('.deleteBtn').on('click',function () {
+           let id= $(this).data('id');
+           $("#delete-modal").modal('show');
+           $("#deleteID").val(id);
+       })
 
-    })
+       new DataTable('#tableData',{
+           order:[[0,'desc']],
+           lengthMenu:[5,10,15,20,30]
+       });
 
-    $('.deleteBtn').on('click',function () {
-        let id= $(this).data('id');
-        $("#delete-modal").modal('show');
-        $("#deleteID").val(id);
-    })
-
-    new DataTable('#tableData',{
-       order:[[0,'desc']],
-       lengthMenu:[5,10,15,20,30]
-   });
+   }catch (e) {
+       unauthorized(e.response.status)
+   }
 
 }
 
 
 </script>
+

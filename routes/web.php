@@ -59,6 +59,13 @@ Route::view('/userProfile','pages.dashboard.profile-page');
 
 
 
+Route::get('/categoryPage', function () {
+    return view('pages.dashboard.category-page');
+});
+
+
+
+// Route::get('/categoryPage','pages.dashboard.category-page.blade');
 // Category Page Routes
 // Route::post("/create-category",[CategoryController::class,'CategoryCreate']);
 // Route::get("/list-category",[CategoryController::class,'CategoryList']);
