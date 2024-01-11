@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 <head>
+
+    <script>
+        if (localStorage.getItem('token') === null) {
+            localStorage.clear();
+            sessionStorage.clear();
+            window.location.href = "/userLogin";
+        }
+    </script>
+
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title></title>
@@ -60,7 +69,7 @@
                     <a href="{{url('/userProfile')}}" class="side-bar-item">
                         <span class="side-bar-item-caption">Profile</span>
                     </a>
-                    <a href="{{url("/logout")}}" class="side-bar-item">
+                    <a href="#" onclick="logout()" class="side-bar-item">
                         <span class="side-bar-item-caption">Logout</span>
                     </a>
                 </div>
@@ -134,6 +143,25 @@
         }
     }
 </script> --}}
+
+
+<script>
+    async function logout() {
+            try {
+                showLoader();
+                let res = await axios.get("/logout",  HeaderToken());
+                hideLoader();
+
+                localStorage.clear();
+                sessionStorage.clear();
+                window.location.href = "/userLogin";
+
+            } catch (e) {
+                errorToast(res.data['message']);
+                unauthorized(e.response.status)
+            }
+        }
+</script>
 
 </body>
 </html>
