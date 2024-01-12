@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +39,11 @@ Route::post("/update-category",[CategoryController::class,'CategoryUpdate'])->mi
 Route::post("/category-by-id",[CategoryController::class,'CategoryByID'])->middleware(['auth:sanctum']);
 
 // Costomer Web Api Routes
-
+Route::post("/create-customer",[CustomerController::class,'CustomerCreate'])->middleware(['auth:sanctum']);
+Route::get("/list-customer",[CustomerController::class,'CustomerList'])->middleware(['auth:sanctum']);
+Route::post("/delete-customer",[CustomerController::class,'CustomerDelete'])->middleware(['auth:sanctum']);
+Route::post("/update-customer",[CustomerController::class,'CustomerUpdate'])->middleware(['auth:sanctum']);
+Route::post("/customer-by-id",[CustomerController::class,'CustomerByID'])->middleware(['auth:sanctum']);
 
 
 // Pages Routes
