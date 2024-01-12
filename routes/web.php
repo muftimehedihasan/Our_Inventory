@@ -64,6 +64,14 @@ Route::get('/categoryPage', function () {
     return view('pages.dashboard.category-page');
 });
 
+// Customer Page
+Route::view('/customerPage','pages.dashboard.customer-page');
+
+
+// Route::get('/customerPage', function () {
+//     return view('pages.dashboard.customer-page');
+// })
+
 // Route::get('/categoryPage',[CategoryController::class,'CategoryPage'])->middleware(['auth:sanctum']);
 
 
