@@ -33,10 +33,7 @@
 <script>
 
 getList();
-
-
 async function getList() {
-
     try {
         showLoader();
         let res=await axios.get("/list-customer",HeaderToken());
