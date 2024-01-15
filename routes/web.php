@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
 
@@ -44,6 +45,12 @@ Route::get("/list-customer",[CustomerController::class,'CustomerList'])->middlew
 Route::post("/delete-customer",[CustomerController::class,'CustomerDelete'])->middleware(['auth:sanctum']);
 Route::post("/update-customer",[CustomerController::class,'CustomerUpdate'])->middleware(['auth:sanctum']);
 Route::post("/customer-by-id",[CustomerController::class,'CustomerByID'])->middleware(['auth:sanctum']);
+
+// Product API
+Route::post("/create-product",[ProductController::class,'CreateProduct'])->middleware(['auth:sanctum']);
+
+
+
 
 
 // Pages Routes
