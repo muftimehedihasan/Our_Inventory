@@ -17,9 +17,6 @@ use App\Http\Controllers\CustomerController;
 |
 */
 
-// Web API Routes
-//////////////////////////
-
 // Profile Api Routes
 Route::post('/user-registration',[UserController::class,'UserRegistration']);
 Route::post('/user-login',[UserController::class,'UserLogin']);
@@ -53,8 +50,11 @@ Route::post("/create-product",[ProductController::class,'CreateProduct'])->middl
 
 
 
-// Pages Routes
-////////////////////////
+/*
+|--------------------------------------------------------------------------
+|Pages Routes
+|--------------------------------------------------------------------------
+*/
 
 // Register and Login Pages Routes
 Route::view('/', 'pages.home');
@@ -64,22 +64,13 @@ Route::view('/sendOtp','pages.auth.send-otp-page');
 Route::view('/verifyOtp','pages.auth.verify-otp-page');
 Route::view('/resetPassword','pages.auth.reset-pass-page');
 Route::view('/userProfile','pages.dashboard.profile-page');
-
-
 // Category Page
-Route::get('/categoryPage', function () {
-    return view('pages.dashboard.category-page');
-});
-
+Route::view('/categoryPage', 'pages.dashboard.category-page');
 // Customer Page
 Route::view('/customerPage','pages.dashboard.customer-page');
+// Product Page
+Route::view('/productPage','pages.dashboard.product-page');
 
-
-// Route::get('/customerPage', function () {
-//     return view('pages.dashboard.customer-page');
-// })
-
-// Route::get('/categoryPage',[CategoryController::class,'CategoryPage'])->middleware(['auth:sanctum']);
 
 
 

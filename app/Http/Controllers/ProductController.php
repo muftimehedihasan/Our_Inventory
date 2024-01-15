@@ -25,9 +25,11 @@ $product = Product::create([
     'category_id' => $validatedData['category_id'],
     'name' => $validatedData['name'],
     'price' => $validatedData['price'],
-    'unit' => $validatedData['unit'],
+    'quantity' => $validatedData['quantity'],
     'img_url' => $validatedData['img_url'],
 ]);
+
+
 
 return response()->json(['message' => 'Product created successfully', 'product' => $product], 201);
 
