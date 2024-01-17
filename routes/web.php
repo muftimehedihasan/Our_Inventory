@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
@@ -43,8 +44,15 @@ Route::post("/delete-customer",[CustomerController::class,'CustomerDelete'])->mi
 Route::post("/update-customer",[CustomerController::class,'CustomerUpdate'])->middleware(['auth:sanctum']);
 Route::post("/customer-by-id",[CustomerController::class,'CustomerByID'])->middleware(['auth:sanctum']);
 
-// Product API
+// Product Web API Routes
 Route::post("/create-product",[ProductController::class,'CreateProduct'])->middleware(['auth:sanctum']);
+Route::post("/delete-product",[ProductController::class,'DeleteProduct'])->middleware(['auth:sanctum']);
+Route::post("/update-product",[ProductController::class,'UpdateProduct'])->middleware(['auth:sanctum']);
+Route::get("/list-product",[ProductController::class,'ProductList'])->middleware(['auth:sanctum']);
+Route::post("/product-by-id",[ProductController::class,'ProductByID'])->middleware(['auth:sanctum']);
+
+// Invoice Web Api
+Route::post("/invoice-create",[InvoiceController::class,'InvoiceCreate'])->middleware(['auth:sanctum']);
 
 
 
