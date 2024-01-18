@@ -52,7 +52,8 @@ Route::get("/list-product",[ProductController::class,'ProductList'])->middleware
 Route::post("/product-by-id",[ProductController::class,'ProductByID'])->middleware(['auth:sanctum']);
 
 // Invoice Web Api
-Route::post("/invoice-create",[InvoiceController::class,'InvoiceCreate'])->middleware(['auth:sanctum']);
+Route::post("/create-invoice",[InvoiceController::class,'CreateInvoice'])->middleware(['auth:sanctum']);
+Route::post("/select-invoice",[InvoiceController::class,'SelectInvoice'])->middleware(['auth:sanctum']);
 
 
 

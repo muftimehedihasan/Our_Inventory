@@ -19,7 +19,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
 
             $table->string('quantity',50);
-            $table->string('sale_price',50);
+            $table->string('price',50);
 
             $table->foreign('invoice_id')->references('id')->on('invoices')
             ->cascadeOnUpdate()->restrictOnDelete();
