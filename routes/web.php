@@ -58,6 +58,7 @@ Route::post("/invoice-create",[InvoiceController::class,'InvoiceCreate'])->middl
 
 
 
+
 /*
 |--------------------------------------------------------------------------
 |Pages Routes
