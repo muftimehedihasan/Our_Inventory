@@ -5,3 +5,4 @@
     @include('components.product.product-create')
     @include('components.product.product-update')
 @endsection
+

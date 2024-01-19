@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
 use Exception;
 use App\Models\Invoice;
 use Illuminate\Http\Request;
@@ -74,6 +75,37 @@ function SelectInvoice(Request $request){
     }
 }
 
+function DetailsInvoice(Request $request){
+try{
+   $user_id=Auth::id();
+   $customerDetails=Customer::where('user_id',$user_id)->where('id',$request->input('customer_id'))->first();
+   $invoiceTotal=Invoice::where('user_id','=',$user_id)->where('id',$request->input('invoice_id'))->first();
+   $invoiceProduct=InvoiceProduct::where('invoice_id',$request->input('invoice_id'))
+   ->where('user_id',$user_id)->with('product')->get();
+   $rows=array('customerDetails'=>$customerDetails,'invoiceTotal'=>$invoiceTotal,'invoiceProduct'=>$invoiceProduct);
+   return response()->json(['status'=>'success','rows'=>$rows]);
+
+}catch(Exception $e){
+    return response()->json(['message'=>$e->getMessage()]);
+}
+
+}
+
+function DeleteInvoice(Request $request){
+    DB::beginTransaction();
+    try {
+        $user_id=Auth::id();
+        InvoiceProduct::where('invoice_id',$request->input('invoice_id'))
+        ->where('user_id',$user_id)->delete();
+        Invoice::where('id',$request->input('invoice_id'))->delete();
+        DB::commit();
+        return response()->json(['message'=>'Invoice Deleted Successfully']);
+
+    }catch(Exception $e){
+        DB::rollBack();
+        return response()->json(['message'=>$e->getMessage()]);
+    }
+}
 
 
 

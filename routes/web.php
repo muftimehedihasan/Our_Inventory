@@ -6,6 +6,7 @@ use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +24,7 @@ Route::post('/user-registration',[UserController::class,'UserRegistration']);
 Route::post('/user-login',[UserController::class,'UserLogin']);
 Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
 Route::get('/logout',[UserController::class,'UserLogout'])->middleware('auth:sanctum');
-// Vew UserProfile's Details Api
+// Vew UserProfile's Details Api ------------------------------------------------------------------------
 Route::get('/user-profile',[UserController::class,'UserProfile'])->middleware('auth:sanctum');
 Route::post('/user-update',[UserController::class,'UpdateProfile'])->middleware('auth:sanctum');
 Route::post('/send-otp',[UserController::class,'SendOTPCode']);
@@ -53,7 +54,12 @@ Route::post("/product-by-id",[ProductController::class,'ProductByID'])->middlewa
 
 // Invoice Web Api
 Route::post("/create-invoice",[InvoiceController::class,'CreateInvoice'])->middleware(['auth:sanctum']);
-Route::post("/select-invoice",[InvoiceController::class,'SelectInvoice'])->middleware(['auth:sanctum']);
+Route::get("/select-invoice",[InvoiceController::class,'SelectInvoice'])->middleware(['auth:sanctum']);
+Route::post("/details-invoice",[InvoiceController::class,'DetailsInvoice'])->middleware(['auth:sanctum']);
+Route::post("/delete-invoice",[InvoiceController::class,'DeleteInvoice'])->middleware(['auth:sanctum']);
+
+// Report Web Api
+Route::get("/sales-report/{FormDete}/{ToDate}",[ReportController::class,'SalesReport'])->middleware(['auth:sanctum']);
 
 
 
@@ -80,6 +86,10 @@ Route::view('/categoryPage', 'pages.dashboard.category-page');
 Route::view('/customerPage','pages.dashboard.customer-page');
 // Product Page
 Route::view('/productPage','pages.dashboard.product-page');
+// Invoice Page
+Route::view('/invoicePage','pages.dashboard.invoice-page');
+// Sale Page
+Route::view('/salePage','pages.dashboard.sale-page');
 
 
 
