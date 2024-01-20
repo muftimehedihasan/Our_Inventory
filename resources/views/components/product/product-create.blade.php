@@ -21,8 +21,8 @@
                                 <label class="form-label mt-2">Price</label>
                                 <input type="text" class="form-control" id="productPrice">
 
-                                <label class="form-label mt-2">Quantity</label>
-                                <input type="text" class="form-control" id="productQuantity">
+                                <label class="form-label mt-2">Unit</label>
+                                <input type="text" class="form-control" id="productUnit">
 
                             </div>
                         </div>
@@ -56,12 +56,12 @@
             let productCategory=document.getElementById('productCategory').value;
             let productName = document.getElementById('productName').value;
             let productPrice = document.getElementById('productPrice').value;
-            let productUnit = document.getElementById('productQuantity').value;
+            let productUnit = document.getElementById('productUnit').value;
             document.getElementById('modal-close').click();
             let PostBody= {
                 "name":productName,
                 "price":productPrice,
-                "Quantity":productUnit,
+                "unit":productUnit,
                 "category_id":productCategory
             }
 
@@ -83,17 +83,6 @@
         }
     }
 </script>
-
-
-
-
-
-
-
-
-
-
-
 
 
 

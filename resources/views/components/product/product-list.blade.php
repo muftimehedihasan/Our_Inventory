@@ -9,7 +9,6 @@
                 <div class="align-items-center col">
                     <button data-bs-toggle="modal" data-bs-target="#create-modal" class="float-end btn m-0  bg-gradient-primary">Create</button>
                 </div>
-
             </div>
             <hr class="bg-dark "/>
             <table class="table" id="tableData">
@@ -17,7 +16,7 @@
                 <tr class="bg-light">
                     <th>Name</th>
                     <th>Price</th>
-                    <th>Quantity</th>
+                    <th>Unit</th>
                     <th>Action</th>
                 </tr>
                 </thead>
@@ -39,7 +38,6 @@ async function getList() {
     try {
         showLoader();
         let res=await axios.get("/list-product",HeaderToken());
-        // console.log(res.data);
         hideLoader();
 
         let tableList=$("#tableList");
@@ -48,12 +46,11 @@ async function getList() {
         tableData.DataTable().destroy();
         tableList.empty();
 
-        res.data['data'].forEach(function (item,index) {
-            console.log(item);
+        res.data['rows'].forEach(function (item,index) {
             let row=`<tr>
                     <td>${item['name']}</td>
                     <td>${item['price']}</td>
-                    <td>${item['quantity']}</td>
+                    <td>${item['unit']}</td>
                     <td>
                         <button data-id="${item['id']}" class="btn editBtn btn-sm btn-outline-success">Edit</button>
                         <button data-id="${item['id']}" class="btn deleteBtn btn-sm btn-outline-danger">Delete</button>
@@ -85,3 +82,4 @@ async function getList() {
 
 
 </script>
+

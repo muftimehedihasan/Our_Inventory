@@ -18,16 +18,13 @@ return new class extends Migration
             $table->unsignedBigInteger('category_id');
 
             $table->foreign('user_id')->references('id')->on('users')
-               ->cascadeOnUpdate()->restrictOnDelete();
-
-            $table->foreign('category_id')->references('id')->on('users')
+                ->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreign('category_id')->references('id')->on('categories')
                 ->cascadeOnUpdate()->restrictOnDelete();
 
             $table->string('name',100);
             $table->string('price',50);
-            $table->string('quantity',50);
-            $table->string('img_url',1000);
-
+            $table->string('unit',50);
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
         });
